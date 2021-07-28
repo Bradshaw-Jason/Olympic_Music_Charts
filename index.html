@@ -7,24 +7,33 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="Description" content="see the top songs during past Olympic games" />
   <title>Olympic Music Charts</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
   <link rel="stylesheet" href="assets/css/style.css" />
 
 </head>
 
 <body>
+  <header>
+    <h1 class="title is-1">Olympic Music Charts</h1>
+    <p class="subtitle is-4">Click on a Hosting country to see the Top Songs, Albums, and Artists</p>
+  </header> 
   <!-- 
   1. title with short description under it 
   2. div holding search form for the olympic games
   3. div container to display music data when t is retrived
 -->
 
-<select id=gameSelection>
-  
+
+<div id="mapid"></div>
 
 
-</select>
 
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="assets/js/script.js"></script>
 </body>
