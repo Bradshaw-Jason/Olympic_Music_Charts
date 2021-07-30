@@ -1,1 +1,30 @@
-#mapid { height: 400px; } 
+
+body {
+    background-color: skyblue;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    line-height: 1;
+}
+
+.title {
+text-align: center;
+background-color: transparent;
+color:  black;
+border-radius: 0;
+border-bottom: 10 px solid black;
+}
+
+.subtitle {
+    text-align: center;
+    background-color: transparent;
+    color: red;
+}
+
+
+
+
+#mapid { 
+    height: 500px; 
+    border: black solid 10px;
+
+} 
+

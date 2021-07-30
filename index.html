@@ -17,16 +17,43 @@
 
 <body>
   <header>
-    <h1 class="title is-1">Olympic Music Charts</h1>
-    <p class="subtitle is-4">Click on a Hosting country to see the Top Songs, Albums, and Artists</p>
+    <h1 class="title is-1 is-spaced" id="title">Olympic Music Charts</h1>
+    <p class="subtitle is-4" id="subtitle">Click on a Hosting country to see the Top Songs, Albums, and Artists</p>
   </header> 
   <!-- 
   1. title with short description under it 
   2. div holding search form for the olympic games
   3. div container to display music data when t is retrived
 -->
+
 <!-- <button id="testBtn">test zoom</button> -->
 
+<div class="columns is-gapless">
+<div class="column">
+  <button class="button is-info is-medium" id="Host1">Host #1</button>
+</div>
+
+<div class="column">
+  <button class="button is-black is-medium" id="Host2">Host #2</button>
+</div>
+
+
+<div class="column">
+  <button class="button is-danger is-medium" id="host3">Host #3</button>
+</div>
+
+<div class ="column">
+  <button class="button is-warning is-medium" id="host4">Host #4</button>
+</div>
+
+<div class="column">
+  <button class="button is-success is-medium" id="host5">Host #5</button>
+</div>
+
+<div class="column">
+  <button class="button is-link is-medium" id="host6">Host #6</button>
+</div>
+</div>
 
 <div id="mapid"></div>
 
@@ -39,6 +66,12 @@ crossorigin=""></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="assets/js/olympicsData.js"></script>
 <script src="assets/js/script.js"></script>
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>Made by Jason Bradshaw and Leona Ysmael</p>
+  </div>
+</footer>
 </body>
 
 </html>
