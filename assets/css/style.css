@@ -1,8 +1,14 @@
 
+html
+{
+    height: 100%;
+}
+
 body {
     background-color: skyblue;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     line-height: 1;
+    height: 100%;
 }
 
 .title {
@@ -23,7 +29,7 @@ border-bottom: 10 px solid black;
 
 
 #mapid { 
-    height: 500px; 
+    height: 80%; 
     border: black solid 10px;
 
 } 

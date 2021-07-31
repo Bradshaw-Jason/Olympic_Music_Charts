@@ -10,7 +10,7 @@
 // var zoomTestEl = $('#testBtn')
 
 //creates the map using leaflets API
-var map = L.map('mapid').setView([51.505, -0.09], 13);
+var map = L.map('mapid').setView([20, 0], 3);
 
 //adds a tile layer to the map from openstreetmaps
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -32,12 +32,81 @@ map.addLayer(stadiumMarkers);
 
 //this function generates the content for the popup at each marker
 function createPopup(feature, layer){
-    var popupContent = "<p>"+feature.properties.city+"</P>"
+    var popupContent =""
 
-    layer.bindPopup(popupContent); 
+    getFlightInfo(feature.properties.airport)
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+        popupContent += "<h3>"+feature.properties.city+"</h3>";
+        if (data.Quotes.length === 0){
+            popupContent += "<p> No flights to this stadium could be found! please choose a different date of origin city</p>";
+        }
+        else{
+            // popupContent += "<p>"+data.Places[0].CityId+"</p>";
+        }
+        
+        layer.bindPopup(popupContent); 
+        
+    })
+    .catch(err => {
+        console.error(err);
+        popupContent += "<p>there was a problem</p>"
+        layer.bindPopup(popupContent); 
+    });
+
+    
 }
 
 
+function getFlightInfo(destination){
+
+    // return fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=Stockholm", {
+    // 	"method": "GET",
+    // 	"headers": {
+	//     	"x-rapidapi-key": "74843f7863msh4827f7620e8ef19p122bb2jsn8896e6fc4cbc",
+	//     	"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
+    // 	}
+    // })
+    var flightURL = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/JFK-sky/"+destination+"/2021-07-31"
+
+    return fetch(flightURL, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "74843f7863msh4827f7620e8ef19p122bb2jsn8896e6fc4cbc",
+		"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
+	}
+    })
+
+// .then(response => {
+// 	console.log(response);
+// })
+// .catch(err => {
+// 	console.error(err);
+// });
+
+};
+
 // zoomTestEl.on('click', function(){
 //     map.flyTo([-100,100], 5)
+// })
+
+// "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SFO-sky/JFK-sky/2021-07-31"
+
+
+//search for a city ID
+// fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query=seattle", {
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-key": "74843f7863msh4827f7620e8ef19p122bb2jsn8896e6fc4cbc",
+// 		"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
+// 	}
+// })
+// .then(response => {
+// 	return response.json();
+// })
+// .then(data=> {
+// 	console.log(data);
 // })
