@@ -31,6 +31,7 @@ var OlympicsData = {
                 "city": "Bejing",
                 "country": "China",
                 "airport": "BJSA-sky"
+
             },
             "geometry": { "type": "Point", "coordinates": [116.3965, 39.9929] }
         },

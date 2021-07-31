@@ -9,6 +9,14 @@
 
 // var zoomTestEl = $('#testBtn')
 
+var sydneyButtonEl = $('#Host1')
+var athensButtonEl = $('#Host2')
+var beijingButtonEl = $('#Host3')
+var londonButtonEl = $('#Host4')
+var rioButtonEl = $('#Host5')
+var tokyoButtonEl =$('#Host6')
+
+
 //creates the map using leaflets API
 var map = L.map('mapid').setView([20, 0], 3);
 
@@ -32,6 +40,7 @@ map.addLayer(stadiumMarkers);
 
 //this function generates the content for the popup at each marker
 function createPopup(feature, layer){
+
     var popupContent =""
 
     getFlightInfo(feature.properties.airport)
@@ -110,3 +119,38 @@ function getFlightInfo(destination){
 // .then(data=> {
 // 	console.log(data);
 // })
+
+sydneyButtonEl.on('click', function(){
+    map.flyTo([-33.8471, 151.0634], 15)
+})
+
+athensButtonEl.on('click', function(){
+    map.flyTo([38.0361,23.7876], 15)
+})
+
+beijingButtonEl.on('click', function(){
+    map.flyTo([39.9929,116.3965], 15)
+})
+
+londonButtonEl.on('click', function(){
+    map.flyTo([51.5387,-0.0166], 15)
+})
+
+rioButtonEl.on('click', function(){
+    map.flyTo([-22.9121, -43.2303], 15)
+
+})
+
+tokyoButtonEl.on('click', function(){
+    map.flyTo([35.6779,139.7145], 15)
+})
+
+// .then(response => {
+// 	console.log(response);
+// })
+// .catch(err => {
+// 	console.error(err);
+// });
+
+};
+
