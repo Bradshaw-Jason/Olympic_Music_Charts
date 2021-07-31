@@ -26,7 +26,7 @@ var OlympicsData = {
             "type": "Feature", "properties": {
                 "id": 2,
                 "Year": "2008",
-                "city": "Bejing",
+                "city": "Beijing",
                 "country": "China"
             },
             "geometry": { "type": "Point", "coordinates": [116.3965, 39.9929] }
