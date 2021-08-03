@@ -17,7 +17,29 @@
 
 <body>
   <header>
-    <h1 class="title is-1 is-spaced" id="title">Visit a Olympic Stadium!</h1>
+    <h1 class="title is-1 is-spaced" id="title">Visit an Olympic Stadium!</h1>
+    <div class="field has-addons" id=".location">
+      <div class="control">
+        <input class="input" type="text" placeholder="Location Airport">
+      </div>
+      <div class="control">
+        <a class="button is-info">
+          Search
+        </a>
+      </div>
+    </div>
+    <div class="field has-addons" id="form2">
+      <div class="control">
+        <div class="select">
+          <select name="country">
+            <option></option>
+          </select>
+        </div>
+      </div>
+      <div class="control">
+        <button type="submit" class="button is-link">submit</button>
+      </div>
+    </div>
     <p class="subtitle is-4" id="subtitle">Click on a Hosting country </p>
   </header> 
   <!-- 
@@ -30,7 +52,7 @@
 
 <div class="columns is-gapless">
 <div class="column">
-  <button class="button is-info is-medium" id="Host1">Sydney, Australia</button>
+  <button class="button is-info is-medium mr-4" id="Host1">Sydney, Australia</button>
 </div>
 
 <div class="column">
@@ -67,9 +89,9 @@ crossorigin=""></script>
 <script src="assets/js/olympicsData.js"></script>
 <script src="assets/js/script.js"></script>
 
-<footer class="footer">
+<footer class="footer" id=".footer">
   <div class="content has-text-centered">
-    <p>Made by Jason Bradshaw and Leona Ysmael</p>
+    <p><b>Made by Jason Bradshaw and Leona Ysmael</b></p>
   </div>
 </footer>
 </body>

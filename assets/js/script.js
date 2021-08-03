@@ -1,6 +1,5 @@
 /*
 1.create a popup for each pin
-1a. get music data for the year
 1b. populate popup with 
 2. create side bar to select which game you want
 2a. populate side bar with list of counttries
@@ -159,6 +158,7 @@ tokyoButtonEl.on('click', function () {
     map.flyTo([35.6779, 139.7145], 15)
 
 })
+
 
 
 function userInput() {
