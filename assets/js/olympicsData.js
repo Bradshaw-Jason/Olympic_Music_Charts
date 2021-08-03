@@ -5,10 +5,11 @@ var OlympicsData = {
         {
             "type": "Feature", "properties": {
                 "id": 0,
-                "Year": "2000",
+                "year": "2000",
                 "city": "Sydney",
                 "country": "Australia",
-                "airport": "SYD-sky"
+                "airport": "SYD-sky",
+                "stadium": "Stadium Australia"
             },
             "geometry": { "type": "Point", "coordinates": [151.0634, -33.8471] }
         },
@@ -16,10 +17,11 @@ var OlympicsData = {
         {
             "type": "Feature", "properties": {
                 "id": 1,
-                "Year": "2004",
+                "year": "2004",
                 "city": "Athens",
                 "country": "Greece",
-                "airport": "ATH-sky"
+                "airport": "ATH-sky",
+                "stadium": "Olympic Stadium of Athens"
             },
             "geometry": { "type": "Point", "coordinates": [23.7876, 38.0361] }
         },
@@ -27,10 +29,11 @@ var OlympicsData = {
         {
             "type": "Feature", "properties": {
                 "id": 2,
-                "Year": "2008",
+                "year": "2008",
                 "city": "Bejing",
                 "country": "China",
-                "airport": "BJSA-sky"
+                "airport": "BJSA-sky",
+                "stadium": "Beijing National Stadium"
 
             },
             "geometry": { "type": "Point", "coordinates": [116.3965, 39.9929] }
@@ -39,10 +42,11 @@ var OlympicsData = {
         {
             "type": "Feature", "properties": {
                 "id": 3,
-                "Year": "2012",
+                "year": "2012",
                 "city": "London",
                 "country": "United Kingdom",
-                "airport": "LHR-sky"
+                "airport": "LHR-sky",
+                "stadium": "London Stadium"
             },
             "geometry": { "type": "Point", "coordinates": [-0.0166, 51.5387] }
         },
@@ -50,10 +54,11 @@ var OlympicsData = {
         {
             "type": "Feature", "properties": {
                 "id": 4,
-                "Year": "2016",
+                "year": "2016",
                 "city": "Rio De Janerio",
                 "country": "Brazil",
-                "airport": "GIG-sky"
+                "airport": "GIG-sky",
+                "stadium": "Maracanã Stadium"
             },
             "geometry": { "type": "Point", "coordinates": [-43.2302, -22.9121] }
         },
@@ -61,10 +66,11 @@ var OlympicsData = {
         {
             "type": "Feature", "properties": {
                 "id": 5,
-                "Year": "2021",
+                "year": "2021",
                 "city": "Tokyo",
                 "country": "Japan",
-                "airport": "TYOA-sky"
+                "airport": "TYOA-sky",
+                "stadium": "Japan National Stadium"
             },
             "geometry": { "type": "Point", "coordinates": [139.7145, 35.6779] }
         },

@@ -55,12 +55,20 @@ function createPopup(feature, layer) {
         })
         .then(data => {
             console.log(data);
-            popupContent += "<h3>" + feature.properties.city + "</h3>";
+            popupContent += "<h3>" + feature.properties.stadium + " " + feature.properties.city + ", " + feature.properties.country + "</h3>";
+            popupContent += "<p>" + feature.properties.year + " Olympic games</p><br>"
+
             if (data.Quotes.length === 0) {
                 popupContent += "<p> No flights to this stadium could be found! please choose a different date of origin city</p>";
             }
             else {
-                popupContent += "<p>" + data.Places[0].CityId + "</p>";
+                popupContent += "<p> Flights from "+data.Places[1].Name+" to "+data.Places[0].Name+": </p><br>";
+                for(var i=0; i<data.Quotes.length; i++){
+                    popupContent += "<p> Carrier: " + data.Carriers[i].Name + "</p>";
+                    popupContent += "<p> Depature Date: " + data.Quotes[i].OutboundLeg.DepartureTime + "</p>";
+                    popupContent += "<p> Price: $" + data.Quotes[i].MinPrice + "</p><br>";
+
+                }
             }
 
             layer.bindPopup(popupContent);
@@ -104,6 +112,7 @@ function getFlightInfo(destination) {
 
 };
 
+searchUserAirport("seattle")
 
 //search for a city ID
 function searchUserAirport(userSearch) {
@@ -119,6 +128,9 @@ function searchUserAirport(userSearch) {
         })
         .then(data => {
             console.log(data);
+
+            //add search options to element
+        
         })
 };
 
