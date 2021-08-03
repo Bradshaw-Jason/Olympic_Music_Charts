@@ -15,6 +15,9 @@ var londonButtonEl = $('#Host4')
 var rioButtonEl = $('#Host5')
 var tokyoButtonEl = $('#Host6')
 
+var locationSearchBtnEl = $('#locationSearchBtn')
+
+
 
 //sets default values for user airport and date
 var userAirport = "JFK-sky";
@@ -53,15 +56,15 @@ function createPopup(feature, layer) {
             return response.json();
         })
         .then(data => {
-            console.log(data);
-            popupContent += "<h3>" + feature.properties.stadium + " " + feature.properties.city + ", " + feature.properties.country + "</h3>";
-            popupContent += "<p>" + feature.properties.year + " Olympic games</p><br>"
+            // console.log(data);
+            popupContent += "<h3>" + feature.properties.stadium + "</h3>";
+            popupContent += "<p>" + feature.properties.year + " " + feature.properties.city + ", " + feature.properties.country +"</p><br>"
 
             if (data.Quotes.length === 0) {
                 popupContent += "<p> No flights to this stadium could be found! please choose a different date of origin city</p>";
             }
             else {
-                popupContent += "<p> Flights from "+data.Places[1].Name+" to "+data.Places[0].Name+": </p><br>";
+                popupContent += "<p> Flights between "+data.Places[1].Name+" and "+data.Places[0].Name+": </p><br>";
                 for(var i=0; i<data.Quotes.length; i++){
                     popupContent += "<p> Carrier: " + data.Carriers[i].Name + "</p>";
                     popupContent += "<p> Depature Date: " + data.Quotes[i].OutboundLeg.DepartureTime + "</p>";
@@ -75,7 +78,7 @@ function createPopup(feature, layer) {
         })
         .catch(err => {
             console.error(err);
-            popupContent += "<p>there was a problem</p>"
+            popupContent += "<p>there was a problem retriving flight info</p>"
             layer.bindPopup(popupContent);
         });
 
@@ -85,13 +88,6 @@ function createPopup(feature, layer) {
 
 function getFlightInfo(destination) {
 
-    // return fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=Stockholm", {
-    // 	"method": "GET",
-    // 	"headers": {
-    //     	"x-rapidapi-key": "74843f7863msh4827f7620e8ef19p122bb2jsn8896e6fc4cbc",
-    //     	"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
-    // 	}
-    // })
     var flightURL = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + userAirport + "/" + destination + "/" + userDate
 
     return fetch(flightURL, {
@@ -101,21 +97,14 @@ function getFlightInfo(destination) {
             "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
         }
     })
-
-    // .then(response => {
-    // 	console.log(response);
-    // })
-    // .catch(err => {
-    // 	console.error(err);
-    // });
-
 };
 
-searchUserAirport("seattle")
-
-//search for a city ID
-function searchUserAirport(userSearch) {
-    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query="+userSearch, {
+// search for users desired airports and populates selection with them
+locationSearchBtnEl.click(function(){
+    var searchedLocation = $('#locationSearch').val()
+    console.log(searchedLocation)
+    if(searchedLocation != null){
+        fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query="+searchedLocation, {
         "method": "GET",
         "headers": {
             "x-rapidapi-key": "74843f7863msh4827f7620e8ef19p122bb2jsn8896e6fc4cbc",
@@ -127,11 +116,28 @@ function searchUserAirport(userSearch) {
         })
         .then(data => {
             console.log(data);
-
             //add search options to element
-        
+            for(var i=0; i<data.Places.length; i++)
+            $('#airportSelect').append("<option value="+data.Places[i].PlaceId+">"+data.Places[i].PlaceName+"</option>")
         })
-};
+    }
+    else{
+        return;
+    }
+});
+
+$('#userAirportBtn').click(function(){
+    userAirport = $('#airportSelect').find(":selected").val();
+    console.log(userAirport)
+    // userDate = ""
+    stadiumMarkers.eachLayer(function (layer) {
+        layer._popup.setContent(createPopup(layer.feature, layer))
+    });
+})
+
+
+
+
 
 sydneyButtonEl.on('click', function () {
     map.flyTo([-33.8471, 151.0634], 15)
@@ -161,12 +167,6 @@ tokyoButtonEl.on('click', function () {
 
 
 
-function userInput() {
-    userAirport = ""
-    userDate = ""
-    stadiumMarkers.eachLayer(function (layer) {
-        layer._popup.setContent(createPopup(layer.feature, layer))
-    });
-}
+
 
 
