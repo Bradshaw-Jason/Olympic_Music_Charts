@@ -1,2 +1,2 @@
-# Olympic_Music_Charts
+# Visit an Olympic Stadium
 This application shows tops songs during past Olympic games
