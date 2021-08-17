@@ -14,6 +14,12 @@ When they click on a hosting party they are able to see current flight prices to
 
 index.html
 
+stylesheet.css
+
+olympicData.js
+
+Script.js
+
 # Contributors 
 
 Jason Bradshaw and Leona Ysmael
